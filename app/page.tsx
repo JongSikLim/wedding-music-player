@@ -6,12 +6,11 @@ import { Button } from "@/components/ui/button"
 // 여기서 음악 파일 경로를 수정하세요
 // public/audio/ 폴더에 mp3 파일을 넣고 파일명만 바꾸면 됩니다
 const TRACKS = [
-  { label: "트랙 1", color: "bg-blue-500 hover:bg-blue-600", src: "/audio/track1.mp3" },
-  { label: "트랙 2", color: "bg-emerald-500 hover:bg-emerald-600", src: "/audio/track2.mp3" },
-  { label: "트랙 3", color: "bg-amber-500 hover:bg-amber-600", src: "/audio/track3.mp3" },
-  { label: "트랙 4", color: "bg-rose-500 hover:bg-rose-600", src: "/audio/track4.mp3" },
-  { label: "트랙 5", color: "bg-violet-500 hover:bg-violet-600", src: "/audio/track5.mp3" },
-  { label: "트랙 6", color: "bg-cyan-500 hover:bg-cyan-600", src: "/audio/track6.mp3" },
+  { label: "서약서", color: "bg-blue-500 hover:bg-blue-600", src: "/audio/forest.mp3" },
+  { label: "종식 입장곡", color: "bg-emerald-500 hover:bg-emerald-600", src: "/audio/forest.mp3" },
+  { label: "소라 입장곡", color: "bg-amber-500 hover:bg-amber-600", src: "/audio/Who is This Woman.mp3" },
+  { label: "입장 이후", color: "bg-rose-500 hover:bg-rose-600", src: "/audio/bgm.mp3" },
+  { label: "식 마무리", color: "bg-violet-500 hover:bg-violet-600", src: "/audio/track4.mp3" }
 ]
 
 export default function Home() {
