@@ -5,8 +5,7 @@ import { Button } from "@/components/ui/button"
 
 // 여기서 음악 파일 경로를 수정하세요
 // public/audio/ 폴더에 mp3 파일을 넣고 파일명만 바꾸면 됩니다
-const TRACKS = [
-  { label: "서약서", color: "bg-blue-500 hover:bg-blue-600", src: "/audio/forest.mp3" },
+const AUDIO_TRACKS = [
   { label: "종식 입장곡", color: "bg-emerald-500 hover:bg-emerald-600", src: "/audio/forest.mp3" },
   { label: "소라 입장곡", color: "bg-amber-500 hover:bg-amber-600", src: "/audio/Who is This Woman.mp3" },
   { label: "입장 이후", color: "bg-rose-500 hover:bg-rose-600", src: "/audio/bgm.mp3" },
@@ -16,6 +15,14 @@ const TRACKS = [
 export default function Home() {
   const [playingIndex, setPlayingIndex] = useState<number | null>(null)
   const audioRef = useRef<HTMLAudioElement | null>(null)
+
+  const stopAudio = () => {
+    if (audioRef.current) {
+      audioRef.current.pause()
+      audioRef.current = null
+    }
+    setPlayingIndex(null)
+  }
 
   useEffect(() => {
     // 컴포넌트 언마운트 시 오디오 정리
@@ -30,11 +37,7 @@ export default function Home() {
   const handleButtonClick = (index: number) => {
     // 같은 버튼을 누르면 정지
     if (playingIndex === index) {
-      if (audioRef.current) {
-        audioRef.current.pause()
-        audioRef.current = null
-      }
-      setPlayingIndex(null)
+      stopAudio()
       return
     }
 
@@ -44,7 +47,7 @@ export default function Home() {
     }
 
     // 새 오디오 재생
-    const audio = new Audio(TRACKS[index].src)
+    const audio = new Audio(AUDIO_TRACKS[index].src)
     audio.play().catch((err) => {
       console.error("오디오 재생 실패:", err)
     })
@@ -61,7 +64,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen p-4 flex flex-col gap-4">
-      {TRACKS.map((track, index) => {
+      {AUDIO_TRACKS.map((track, index) => {
         const isPlaying = playingIndex === index
         return (
           <Button
